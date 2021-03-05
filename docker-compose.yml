@@ -1,0 +1,45 @@
+version: "3.3"
+
+services:
+  reverse-proxy:
+    # The official v2 Traefik docker image
+    image: traefik:v2.4
+    # Enables the web UI and tells Traefik to listen to docker
+    command:
+      - --entrypoints.web.address=:80
+      # Declares the web-secure entrypoint in Traefik
+      - --entrypoints.web-secure.address=:443
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.file.directory=/configuration/
+      - --providers.file.watch=true
+
+    ports:
+      # The HTTP(S) port
+      - "80:80"
+      - "443:443"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /e/projects/js/vid/services/traefik/configuration/:/configuration/
+      - /e/projects/js/vid/services/traefik/certs/:/certs/
+
+  api:
+    build:
+      context: packages/api
+      dockerfile: Dockerfile
+    labels:
+      # Filter requests based on their path prefix
+      - "traefik.http.routers.api.rule=PathPrefix(`/api`)"
+      - "traefik.http.routers.api.priority=1"
+      # Use HTTPS
+      - "traefik.http.routers.api.tls=true"
+      # Create stripprefix + redirect middlewares and apply them to the router
+      - "traefik.http.middlewares.api-stripprefix.stripprefix.prefixes=/api"
+      - "traefik.http.middlewares.api-redirectscheme.redirectscheme.scheme=https"
+      - "traefik.http.routers.api.middlewares=api-redirectscheme@docker,api-stripprefix@docker"
+      # Tell Traefik to use the port 8000 to connect to the container
+      - "traefik.http.services.api.loadbalancer.server.port=8000"
+      - "traefik.http.routers.api.service=api"

@@ -1,0 +1,7 @@
+[[tls.certificates]] #first certificate
+  certFile = "/certs/cert.crt" 
+  keyFile = "/certs/cert.key"
+
+[[tls.certificates]] #second certificate
+  certFile = "/certs/cert.crt"
+  keyFile = "/certs/cert.key"
