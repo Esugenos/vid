@@ -28,7 +28,7 @@ services:
 
   api:
     build:
-      context: packages/api
+      context: services/api
       dockerfile: Dockerfile
     labels:
       # Filter requests based on their path prefix
