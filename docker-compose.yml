@@ -30,6 +30,8 @@ services:
     build:
       context: services/api
       dockerfile: Dockerfile
+    volumes:
+      - /e/projects/js/vid/services/api/public:/public
     labels:
       # Filter requests based on their path prefix
       - "traefik.http.routers.api.rule=PathPrefix(`/api`)"
