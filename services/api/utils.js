@@ -9,20 +9,21 @@ const getMediaData = (input) => new Promise((resolve, reject) => {
 });
 
 const getVideoDimensions = ({ streams }) => new Promise((resolve, reject) => {
+  // eslint-disable-next-line camelcase
   const videoStreams = streams.filter(({ codec_type }) => codec_type === 'video');
-  if (videoStreams.length === 0) reject("No video data found.");
+  if (videoStreams.length === 0) reject(new Error('No video data found.'));
   else resolve({ width: videoStreams[0].width, height: videoStreams[0].height });
 });
 
 const generateVideo = (input, output) => {
-
   getMediaData(input)
-    .then(mediaData => getVideoDimensions(mediaData))
+    .then((mediaData) => getVideoDimensions(mediaData))
     .then(({ width, height }) => {
-
+      // eslint-disable-next-line no-console
+      console.log({ width, height });
     })
-    .catch(err => console.error(err));
-  
+    .catch((err) => console.error(err));
+
   // Use the run() method to run commands with multiple outputs
   ffmpeg(input)
     .videoFilters({
@@ -33,8 +34,8 @@ const generateVideo = (input, output) => {
         w: 100,
         h: 100,
         color: 'white@1',
-        t: 'max'
-      }
+        t: 'max',
+      },
     })
     .videoFilters({
       filter: 'drawbox',
@@ -44,11 +45,12 @@ const generateVideo = (input, output) => {
         w: 100,
         h: 100,
         color: 'white@1',
-        t: 'max'
-      }
+        t: 'max',
+      },
     })
     .output(output)
     .on('end', () => {
+      // eslint-disable-next-line no-console
       console.log('The video is generated!');
     })
     .run();
