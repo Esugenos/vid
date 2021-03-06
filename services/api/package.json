@@ -9,6 +9,12 @@
   },
   "author": "Esu",
   "license": "UNLICENSED",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-base": "^14.2.1"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "fluent-ffmpeg": "^2.1.2"
