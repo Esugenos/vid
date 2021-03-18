@@ -1,0 +1,37 @@
+html, body {
+    background-color: #ededed;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: black;
+}
+
+.title {
+    font-size: 1em;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.title > span {
+    display: inline-block;
+    vertical-align: middle;
+}
+p {
+    font-family: 'FiraCodeRegular';
+    font-weight: normal;
+    font-style: normal;
+    margin-bottom: 0;
+}
+
+.main-wrapper {
+  box-sizing: border-box;
+  overflow: auto;
+  max-width: 60%;
+  margin-left: 20%;
+}
+
+.main {
+  width: 100%;
+  padding-bottom: 56.25%;
+  background-color: white;
+}
