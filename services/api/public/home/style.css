@@ -1,26 +1,27 @@
-html, body {
-    background-color: #ededed;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    color: black;
+html,
+body {
+  background-color: #ededed;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: black;
 }
 
 .title {
-    font-size: 1em;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
+  font-size: 1em;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
 }
 .title > span {
-    display: inline-block;
-    vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
 }
 p {
-    font-family: 'FiraCodeRegular';
-    font-weight: normal;
-    font-style: normal;
-    margin-bottom: 0;
+  font-family: "FiraCodeRegular";
+  font-weight: normal;
+  font-style: normal;
+  margin-bottom: 0;
 }
 
 .main-wrapper {
@@ -33,5 +34,22 @@ p {
 .main {
   width: 100%;
   padding-bottom: 56.25%;
-  background-color: white;
+  background-image: url("./base.png");
+  background-size: cover;
+}
+
+.preview-tile {
+  background-image: url("./base-full.png");
+  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0);
+  opacity: 0;
+  transform: scale(1);
+  transition: box-shadow 1s cubic-bezier(0, 0.8, 0.2, 1),
+    transform 1s cubic-bezier(0, 0.8, 0.2, 1),
+    opacity 1s cubic-bezier(0, 0.8, 0.2, 1);
+}
+.preview-tile:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.8);
+  opacity: 1;
 }
