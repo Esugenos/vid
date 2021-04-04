@@ -23,15 +23,17 @@ services:
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
-      - /e/projects/js/vid/services/traefik/configuration/:/configuration/
-      - /e/projects/js/vid/services/traefik/certs/:/certs/
+      - ./reverse-proxy/configuration/:/configuration/
+      - ./reverse-proxy/certs/:/certs/
 
   api:
     build:
       context: services/api
       dockerfile: Dockerfile
     volumes:
-      - /e/projects/js/vid/services/api/public:/public
+      # For developement HMR
+      - ./services/api:/usr/src/app
+      - /usr/src/app/node_modules
     labels:
       # Filter requests based on their path prefix
       - "traefik.http.routers.api.rule=PathPrefix(`/api`)"
