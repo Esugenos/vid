@@ -39,7 +39,7 @@ p {
 }
 
 .preview-tile {
-  background-image: url("./base-full.png");
+  background-image: url("./base.png");
   box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0);
   opacity: 0;
   transform: scale(1);
@@ -50,6 +50,20 @@ p {
 .preview-tile:hover {
   cursor: pointer;
   transform: scale(1.5);
-  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.6);
   opacity: 1;
+}
+
+.tippy-box[data-theme~="custom"] {
+  background-color: #ededed;
+  color: black;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  border: 0;
+  border-radius: 0;
+  max-width: 400px;
+  padding: 17px;
+}
+.tippy-content {
+  padding: 0;
 }

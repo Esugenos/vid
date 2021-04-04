@@ -1,4 +1,6 @@
-FROM jacobwgillespie/nodejs-ffmpeg
+# FROM jacobwgillespie/nodejs-ffmpeg
+
+FROM nikolaik/python-nodejs
 
 # Create app directory
 RUN mkdir -p /usr/src/app

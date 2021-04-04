@@ -36,7 +36,7 @@ const updateTileStyle = (hcount, vcount, mousePos, mainRect) => {
     prevY = y;
   }
   console.log(100 * width / 1920);
-  el.setAttribute('style', `
+  const style = `
     position: absolute;
     width: ${width / hcount}px;
     height: ${height / vcount}px;
@@ -44,7 +44,18 @@ const updateTileStyle = (hcount, vcount, mousePos, mainRect) => {
     top: ${top + y * height / vcount}px;
     background-size: ${100 * hcount}%;
     background-position: left ${-x * width / hcount}px top ${-y * height / vcount}px;
-  `);
+  `;
+  el.setAttribute('style', style);
+  const zoom = 18;
+  tippy(el, {
+    // content: `<div style="background-image: url("./base.png"); ${style};"></div>`,
+    content: `<div style="background-image: url('./base.png'); display:'block'; width:${zoom * width / hcount}px; height:${zoom * height / vcount}px; background-size: ${100 * hcount}%; image-rendering: pixelated; background-position: left ${-zoom * x * width / hcount}px top ${-zoom * y * height / vcount}px;"></div> #${y + x * vcount}`,
+    theme: 'custom',
+    arrow: false,
+    placement: 'right',
+    offset: [0, 36],
+    allowHTML: true,
+  });
 };
 
 const hcount = 64;
@@ -53,3 +64,10 @@ const vcount = 36;
 // const vcount = 9;
 main.addEventListener('mousemove', (e) => updateTileStyle(hcount, vcount, e, main));
 window.addEventListener('resize', (e) => updateTileStyle(hcount, vcount, e, main));
+
+// tippy('.preview-tile', {
+//   content: '<span class="tooltip-span">Features of this tooltip:</span><ul><li>I have a list inside</li><li>I am on the right</li></ul>',
+//   theme: 'custom',
+//   arrow: false,
+//   placement: 'right',
+// });
