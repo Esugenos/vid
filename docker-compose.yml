@@ -36,14 +36,11 @@ services:
       - /usr/src/app/node_modules
     labels:
       # Filter requests based on their path prefix
-      - "traefik.http.routers.api.rule=PathPrefix(`/api`)"
+      - "traefik.http.routers.api.rule=PathPrefix(`/`)"
       - "traefik.http.routers.api.priority=1"
-      # Use HTTPS
-      - "traefik.http.routers.api.tls=true"
       # Create stripprefix + redirect middlewares and apply them to the router
-      - "traefik.http.middlewares.api-stripprefix.stripprefix.prefixes=/api"
-      - "traefik.http.middlewares.api-redirectscheme.redirectscheme.scheme=https"
-      - "traefik.http.routers.api.middlewares=api-redirectscheme@docker,api-stripprefix@docker"
+      - "traefik.http.middlewares.api-stripprefix.stripprefix.prefixes=/"
+      - "traefik.http.routers.api.middlewares=api-stripprefix@docker"
       # Tell Traefik to use the port 8000 to connect to the container
       - "traefik.http.services.api.loadbalancer.server.port=8000"
       - "traefik.http.routers.api.service=api"

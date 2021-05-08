@@ -5,7 +5,11 @@ const generatePreview = require('./image');
 const app = express();
 const port = 8000;
 
-app.use('/static', express.static('./public'));
+app.use('/public', express.static('./public'));
+app.use('/fr', express.static('./public/home/fr.html'));
+app.use('/en', express.static('./public/home/en.html'));
+app.use('/about/fr', express.static('./public/about/fr.html'));
+app.use('/about/en', express.static('./public/about/en.html'));
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
@@ -18,6 +22,11 @@ const data = {
   row: 36,
   cells: {
     0: {
+      // last year
+      data: Date.now() - 31536000000,
+      buyer: 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq',
+    },
+    1280: {
       // last year
       data: Date.now() - 31536000000,
       buyer: 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq',
@@ -39,4 +48,9 @@ const data = {
     },
   },
 };
+
+app.get('/count', (req, res) => {
+  res.send({ count: Object.entries(data.cells).length });
+});
+
 generatePreview(data);

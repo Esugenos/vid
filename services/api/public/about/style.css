@@ -1,0 +1,75 @@
+html,
+body {
+  background-color: #ededed;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: black;
+}
+
+.title {
+  font-size: 1em;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.title > span {
+  display: inline-block;
+  vertical-align: middle;
+}
+p {
+  font-family: "FiraCodeRegular";
+  font-weight: normal;
+  font-style: normal;
+  margin-bottom: 0;
+}
+
+.main-wrapper {
+  box-sizing: border-box;
+  overflow: auto;
+  max-width: 60%;
+  margin-left: 20%;
+}
+
+.main {
+  width: 100%;
+  padding-bottom: 56.25%;
+  background-size: cover;
+  display: inline;
+}
+
+.side {
+  font-size: 13px;
+}
+
+.share-container {
+  position: absolute;
+  width: 100%;
+  bottom: 2em;
+}
+.share {
+  display: table;
+  margin: 0 auto;
+  background-color: #ededed;
+}
+.share > a > img {
+  height: 2em;
+  margin: 0.5em;
+}
+
+.lang-container {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+}
+.lang {
+  display: table;
+  margin: 0 auto;
+}
+.lang > a {
+  font-family: "FiraCodeRegular";
+  font-weight: normal;
+  font-style: normal;
+  margin-bottom: 0;
+  margin: 0.5em;
+}

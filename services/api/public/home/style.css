@@ -40,7 +40,6 @@ p {
 
 .preview-tile {
   background-image: url("./base.png");
-  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0);
   opacity: 0;
   transform: scale(1);
   transition: box-shadow 1s cubic-bezier(0, 0.8, 0.2, 1),
@@ -50,7 +49,19 @@ p {
 .preview-tile:hover {
   cursor: pointer;
   transform: scale(1.5);
+  opacity: 1;
+}
+
+.shadow {
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.6);
+}
+
+.no-shadow {
+  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.opaque {
+  cursor: pointer;
   opacity: 1;
 }
 
@@ -63,7 +74,34 @@ p {
   border-radius: 0;
   max-width: 400px;
   padding: 17px;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
 }
 .tippy-content {
   padding: 0;
+}
+
+#footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.side {
+  font-size: 13px;
+}
+
+.lang-container {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+}
+.lang {
+  display: table;
+  margin: 0 auto;
+}
+.lang > a {
+  font-family: "FiraCodeRegular";
+  font-weight: normal;
+  font-style: normal;
+  margin-bottom: 0;
+  margin: 0.5em;
 }
