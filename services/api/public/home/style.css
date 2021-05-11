@@ -45,7 +45,7 @@ p {
 }
 
 .preview-tile {
-  background-image: url("./base.png");
+  background-image: url("/public/base-full.png");
   opacity: 0;
   transform: scale(1);
   transition: box-shadow 1s cubic-bezier(0, 0.8, 0.2, 1),
