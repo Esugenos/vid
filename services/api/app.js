@@ -21,7 +21,7 @@ const data = {
   col: 64,
   row: 36,
   cells: {
-    0: {
+    1: {
       // last year
       data: Date.now() - 31536000000,
       buyer: 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq',

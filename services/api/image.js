@@ -20,7 +20,7 @@ const generatePreview = ({
       lastX = 0;
       lastY = i * cellHeight;
       for (let j = 0; j < col; j++) {
-        if (cells[i + j * row]) {
+        if (cells[1 + j + i * col]) {
           ctx.fillRect(lastX, lastY, j * cellWidth - lastX, cellHeight);
           lastX = (j + 1) * cellWidth;
         }
