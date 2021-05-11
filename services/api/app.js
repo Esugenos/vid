@@ -54,3 +54,7 @@ app.get('/count', (req, res) => {
 });
 
 generatePreview(data);
+
+app.get('*', (req, res) => {
+  res.redirect('/en');
+});
