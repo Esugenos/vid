@@ -11,7 +11,7 @@ const generatePreview = ({
   const cellHeight = height / row;
 
   // Draw the full image, then hide some parts
-  loadImage('./base-full.png').then((image) => {
+  loadImage('./public/base-full.png').then((image) => {
     ctx.drawImage(image, 0, 0, width, height);
     ctx.fillStyle = 'white';
     let lastX = 0;

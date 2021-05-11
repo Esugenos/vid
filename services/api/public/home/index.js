@@ -67,8 +67,7 @@ const updateTileStyle = (hcount, vcount, mousePos, mainRect) => {
   }
   // eslint-disable-next-line no-undef
   tippy(el, {
-    // content: `<div style="background-image: url("./base.png"); ${style};"></div>`,
-    content: `<div style="background-image: url('./base.png'); display:'block'; width:${zoom * width / hcount}px; height:${zoom * height / vcount}px; background-size: ${100 * hcount}%; image-rendering: pixelated; background-position: left ${-zoom * x * width / hcount}px top ${-zoom * y * height / vcount}px;"></div> #${1 + x + y * hcount}`,
+    content: `<div style="background-image: url('/public/base-full.png'); display:'block'; width:${zoom * width / hcount}px; height:${zoom * height / vcount}px; background-size: ${100 * hcount}%; image-rendering: pixelated; background-position: left ${-zoom * x * width / hcount}px top ${-zoom * y * height / vcount}px;"></div> #${1 + x + y * hcount}`,
     theme: 'custom',
     arrow: false,
     placement: 'right',
@@ -100,6 +99,6 @@ main.addEventListener('mousemove', (e) => updateTileStyle(hcount, vcount, e, mai
 window.addEventListener('resize', (e) => updateTileStyle(hcount, vcount, e, main));
 
 // Update counter
-fetch('http://localhost/count').then((res) => res.json()).then(({ count }) => {
+fetch('/count').then((res) => res.json()).then(({ count }) => {
   document.getElementById('counter').innerHTML = `${count.toString().padStart(4, '0')}/2304`;
 });
