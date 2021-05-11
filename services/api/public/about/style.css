@@ -13,14 +13,12 @@ a {
 }
 
 .title {
-  font-size: 1em;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-}
-.title > span {
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  height: 1.25em;
 }
 p {
   font-family: "FiraCodeRegular";
