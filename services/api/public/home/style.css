@@ -31,7 +31,7 @@ p {
 
 .main-wrapper {
   box-sizing: border-box;
-  overflow: auto;
+  overflow: hidden;
   max-width: 60%;
   margin-left: 20%;
 }
