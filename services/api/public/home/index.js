@@ -54,6 +54,17 @@ const updateTileStyle = (hcount, vcount, mousePos, mainRect) => {
   `;
   el.setAttribute('style', style);
   const zoom = 18;
+  const unTrigger = (instance) => {
+    el.classList.add('no-shadow');
+    el.classList.remove('opaque');
+    el.classList.remove('shadow');
+    const tmpEl = el;
+    setTimeout(() => {
+      if (tmpEl && tmpEl.parentNode) tmpEl.parentNode.removeChild(tmpEl);
+    }, 1000);
+    triggered = false;
+    if(instance) instance.hide();
+  }
   // eslint-disable-next-line no-undef
   tippy(el, {
     // content: `<div style="background-image: url("./base.png"); ${style};"></div>`,
@@ -63,24 +74,22 @@ const updateTileStyle = (hcount, vcount, mousePos, mainRect) => {
     placement: 'right',
     offset: [0, 36],
     allowHTML: true,
-    hideOnClick: 'click',
     trigger: 'click',
     onTrigger() {
+      if(triggered) {
+        unTrigger(null);
+        return;
+      }
       el.classList.add('shadow');
       el.classList.add('opaque');
       el.classList.remove('no-shadow');
       triggered = true;
     },
+    onUntrigger(instance, event) {
+      unTrigger(instance);
+    },
     onClickOutside(instance) {
-      el.classList.add('no-shadow');
-      el.classList.remove('opaque');
-      el.classList.remove('shadow');
-      const tmpEl = el;
-      setTimeout(() => {
-        if (tmpEl && tmpEl.parentNode) tmpEl.parentNode.removeChild(tmpEl);
-      }, 1000);
-      triggered = false;
-      instance.hide();
+      unTrigger(instance);
     },
   });
 };
