@@ -47,6 +47,14 @@ p {
   font-size: 13px;
 }
 
+.back-button {
+  position: absolute;
+  width: 1.5em;
+  top: 2em;
+  left: 2em;
+  cursor: pointer;
+}
+
 .share-container {
   position: absolute;
   width: 100%;
