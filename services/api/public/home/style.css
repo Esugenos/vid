@@ -16,15 +16,18 @@ a {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  height: 1.25em;
+  margin-top: 1.3em;
+  margin-bottom: 1.2em;
+  height: 1em;
 }
 p {
   font-family: "FiraCodeRegular";
   font-weight: normal;
   font-style: normal;
   margin-bottom: 0;
+}
+.numero {
+  margin-top: 0.4em;
 }
 
 .main-wrapper {
