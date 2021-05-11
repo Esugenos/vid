@@ -72,9 +72,9 @@ p {
 
 .tippy-box[data-theme~="custom"] {
   background-color: #ededed;
-  color: black;
-  font-family: Raleway, sans-serif;
-  font-size: 18px;
+  color: #000000;
+  font-family: "FiraCodeRegular";
+  font-style: 18px;
   border: 0;
   border-radius: 0;
   max-width: 400px;
